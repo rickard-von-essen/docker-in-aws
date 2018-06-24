@@ -7,10 +7,10 @@ phases:
       - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
       - export BUILD_ID=$(echo $CODEBUILD_BUILD_ID | sed 's/^[^:]*://g')
       - export APP_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION.$BUILD_ID
+      - cd ch13/todobackend
       - make login
   build:
     commands:
-      - cd ch13/todobackend
       - make test
       - make release
       - make publish
