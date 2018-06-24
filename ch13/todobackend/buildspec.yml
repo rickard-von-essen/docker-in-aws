@@ -10,6 +10,7 @@ phases:
       - make login
   build:
     commands:
+      - cd ch13/todobackend
       - make test
       - make release
       - make publish
